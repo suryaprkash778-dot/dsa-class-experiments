@@ -20,6 +20,25 @@ int binarySearch(int arr[], int n, int key) {
     return -1; // Key not found
 }
 
+// Recursive Binary Search Function
+int binarySearchRecursive(int arr[], int left, int right, int key) {
+    if (left > right) {
+        return -1; // Base case: key not found
+    }
+
+    int mid = left + (right - left) / 2;
+
+    if (arr[mid] == key) {
+        return mid; // Key found
+    }
+    else if (arr[mid] > key) {
+        return binarySearchRecursive(arr, left, mid - 1, key); // Search left half
+    }
+    else {
+        return binarySearchRecursive(arr, mid + 1, right, key); // Search right half
+    }
+}
+
 int main() {
     int n, key;
 
